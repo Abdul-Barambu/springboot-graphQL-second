@@ -30,4 +30,14 @@ public class MovieController {
     Movie addMovieHandler(@Argument MovieInput movieInput){
         return movieService.addMovie(movieInput);
     }
+
+    @MutationMapping
+    Movie updateMovieHandler(@Argument Integer id, @Argument MovieInput movieInput){
+        return movieService.updateMovie(id, movieInput);
+    }
+
+    @MutationMapping
+    String deleteMovieHandler(@Argument Integer id){
+        return movieService.deleteMovie(id);
+    }
 }

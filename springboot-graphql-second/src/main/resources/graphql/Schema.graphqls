@@ -4,6 +4,8 @@ type Query{
 
 type Mutation{
     addMovieHandler(movieInput: MovieInput): Movie
+    updateMovieHandler(id: Int, movieInput: MovieInput): Movie
+    deleteMovieHandler(id: Int): String
 }
 
 type Movie{

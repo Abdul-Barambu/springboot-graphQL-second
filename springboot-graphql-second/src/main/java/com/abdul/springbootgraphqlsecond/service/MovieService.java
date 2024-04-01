@@ -28,7 +28,30 @@ public class MovieService {
                 movieInput.releaseYear(),
                 movieInput.movieCast());
 
-       return movieRepository.save(movie);
+        return movieRepository.save(movie);
+    }
+
+    public Movie updateMovie(Integer id, MovieInput movieInput) {
+//        find if the id is valid or not;
+        Movie movie = movieRepository.findById(id).orElseThrow(() -> new RuntimeException("Movie does not exist"));
+
+        movie.setTitle(movieInput.title());
+        movie.setDirector(movieInput.director());
+        movie.setStudio(movieInput.studio());
+        movie.setReleaseYear(movieInput.releaseYear());
+        movie.setMovieCast(movieInput.movieCast());
+
+        return movieRepository.save(movie);
+
+    }
+
+    public String deleteMovie(Integer id) {
+        //        find if the id is valid or not;
+        Movie movie = movieRepository.findById(id).orElseThrow(() -> new RuntimeException("Movie does not exist"));
+
+        movieRepository.delete(movie);
+
+        return "Movie deleted Successfully";
     }
 
 }
