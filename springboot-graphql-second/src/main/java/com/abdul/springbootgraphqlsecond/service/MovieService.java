@@ -1,5 +1,6 @@
 package com.abdul.springbootgraphqlsecond.service;
 
+import com.abdul.springbootgraphqlsecond.exception.MovieNotFoundException;
 import com.abdul.springbootgraphqlsecond.models.Movie;
 import com.abdul.springbootgraphqlsecond.models.MovieInput;
 import com.abdul.springbootgraphqlsecond.repository.MovieRepository;
@@ -33,7 +34,7 @@ public class MovieService {
 
     public Movie updateMovie(Integer id, MovieInput movieInput) {
 //        find if the id is valid or not;
-        Movie movie = movieRepository.findById(id).orElseThrow(() -> new RuntimeException("Movie does not exist"));
+        Movie movie = movieRepository.findById(id).orElseThrow(() -> new MovieNotFoundException("Movie does not exist"));
 
         movie.setTitle(movieInput.title());
         movie.setDirector(movieInput.director());
@@ -47,7 +48,7 @@ public class MovieService {
 
     public String deleteMovie(Integer id) {
         //        find if the id is valid or not;
-        Movie movie = movieRepository.findById(id).orElseThrow(() -> new RuntimeException("Movie does not exist"));
+        Movie movie = movieRepository.findById(id).orElseThrow(() -> new MovieNotFoundException("Movie does not exist"));
 
         movieRepository.delete(movie);
 
