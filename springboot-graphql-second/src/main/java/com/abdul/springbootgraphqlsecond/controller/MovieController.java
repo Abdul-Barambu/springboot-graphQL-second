@@ -20,7 +20,7 @@ public class MovieController {
 
 //      get movies
     @QueryMapping
-    List<Movie> getAllMoviesHandler(){     //    define handler
+    List<Movie> movies(){     //    define handler
         return movieService.getAllMovies();
     }
 
