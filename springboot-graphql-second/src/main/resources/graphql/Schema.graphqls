@@ -1,5 +1,5 @@
 type Query{
-    movies: [Movie]
+    getAllMoviesHandler: [Movie]
 }
 
 type Mutation{
